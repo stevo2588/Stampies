@@ -125,6 +125,13 @@ void SelectionScreen::setup(int mode) {
     else {
         state = IMAGES1;
         
+        randomizedCatIndices.resize(imageFiles[mode].size());
+        for(int i=0; i<imageFiles[mode].size(); i++) {
+            randomizedCatIndices[i] = i;
+        }
+        // randomize indices
+        std::random_shuffle(randomizedCatIndices.begin(), randomizedCatIndices.end());
+        
         grid.isColors = false;
         
         //--- allocate memory for images --------
@@ -134,7 +141,7 @@ void SelectionScreen::setup(int mode) {
         
         
         grid.SetGridSize(imagesPerCategory/2, 2, 824, 768, ofVec2f(200,0));
-        changeImageCategory(0);
+        changeImageCategory(randomizedCatIndices[0]);
         grid.SetGridContent(getBGForImages(), gridDrawables, gridDrawables, 1.0f);
         
         sidebar.SetGridSize(1, 4, 200, 768, ofVec2f(0,0));
@@ -231,7 +238,7 @@ void SelectionScreen::update() {
         default:
             state = (SelectionState)((int)state+1);
             grid.deselectAll();
-            changeImageCategory(state);
+            changeImageCategory(randomizedCatIndices[state]);
             break;
     }
 }

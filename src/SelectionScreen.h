@@ -124,6 +124,8 @@ private:
     std::vector<Utility::ImageDrawable> matImageDrawables;
     std::vector<Utility::CenterDrawable*> matDrawables;
     
+    std::vector<int> randomizedCatIndices;
+    
     Canvas& canvas;
     
     unsigned delayToRegister;
