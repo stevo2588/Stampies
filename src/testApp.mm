@@ -27,23 +27,35 @@ testApp::testApp()
     // define and register the "known" patterns
     
     // FELT
+    //std::vector<ofVec2f> p0(3);
+    //p0[0] = ofVec2f(14,-64); p0[1] = ofVec2f(-33,32); p0[2] = ofVec2f(20,32);
+    //knownPatterns[0] = tpm.registerPattern(p0, 7);
     std::vector<ofVec2f> p0(3);
-    p0[0] = ofVec2f(14,-64); p0[1] = ofVec2f(-33,32); p0[2] = ofVec2f(20,32);
+    p0[0] = ofVec2f(-46,0); p0[1] = ofVec2f(-5,52); p0[2] = ofVec2f(52,-53);
     knownPatterns[0] = tpm.registerPattern(p0, 7);
     
     // PLASTIC
+    //std::vector<ofVec2f> p1(3);
+    //p1[0] = ofVec2f(-9,24); p1[1] = ofVec2f(55,-16); p1[2] = ofVec2f(-45,-9);
+    //knownPatterns[1] = tpm.registerPattern(p1, 7);
     std::vector<ofVec2f> p1(3);
-    p1[0] = ofVec2f(-9,24); p1[1] = ofVec2f(55,-16); p1[2] = ofVec2f(-45,-9);
+    p1[0] = ofVec2f(22,-27); p1[1] = ofVec2f(-72,10); p1[2] = ofVec2f(49,16);
     knownPatterns[1] = tpm.registerPattern(p1, 7);
     
-    // SILICONE
+    // SILICON
+    //std::vector<ofVec2f> p2(3);
+    //p2[0] = ofVec2f(-15,24); p2[1] = ofVec2f(39,35); p2[2] = ofVec2f(-24,-60);
+    //knownPatterns[2] = tpm.registerPattern(p2, 7);
     std::vector<ofVec2f> p2(3);
-    p2[0] = ofVec2f(-15,24); p2[1] = ofVec2f(39,35); p2[2] = ofVec2f(-24,-60);
+    p2[0] = ofVec2f(52,37); p2[1] = ofVec2f(-22,26); p2[2] = ofVec2f(-30,-62);
     knownPatterns[2] = tpm.registerPattern(p2, 7);
     
     // WOOD
+    //std::vector<ofVec2f> p3(3);
+    //p3[0] = ofVec2f(54,18); p3[1] = ofVec2f(-54,3); p3[2] = ofVec2f(0,-20);
+    //knownPatterns[3] = tpm.registerPattern(p3, 7);
     std::vector<ofVec2f> p3(3);
-    p3[0] = ofVec2f(54,18); p3[1] = ofVec2f(-54,3); p3[2] = ofVec2f(0,-20);
+    p3[0] = ofVec2f(-57,12); p3[1] = ofVec2f(9,27); p3[2] = ofVec2f(47,-38);
     knownPatterns[3] = tpm.registerPattern(p3, 7);
     
     knownPatternSize = 4;
