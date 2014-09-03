@@ -39,7 +39,7 @@ testApp::testApp()
     //p1[0] = ofVec2f(-9,24); p1[1] = ofVec2f(55,-16); p1[2] = ofVec2f(-45,-9);
     //knownPatterns[1] = tpm.registerPattern(p1, 7);
     std::vector<ofVec2f> p1(3);
-    p1[0] = ofVec2f(22,-27); p1[1] = ofVec2f(-72,10); p1[2] = ofVec2f(49,16);
+    p1[0] = ofVec2f(-43,5); p1[1] = ofVec2f(-5,-55); p1[2] = ofVec2f(49,49);
     knownPatterns[1] = tpm.registerPattern(p1, 7);
     
     // SILICON
