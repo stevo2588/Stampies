@@ -82,9 +82,24 @@ void SelectionScreen::setNumImages(size_t n) {
     }
 }
 
+/*
 void SelectionScreen::changeImageCategory(unsigned cat) {
     for (int i=0; i<imageFiles[userStudyMode][cat].size(); i++) {
         gridImageDrawables[i].set(imageFiles[userStudyMode][cat][i]);
+    }
+}*/
+
+// Shuffle main vector, use current index
+void SelectionScreen::changeImages(unsigned index) {
+    size_t theSize = randomizedIndices.size();
+    std::vector<unsigned> order(theSize);
+    for (int i=0; i<theSize; i++) {
+        order[i] = i;
+    }
+    std::random_shuffle(order.begin(), order.end());
+    
+    for (int i=0; i<imageFiles[userStudyMode][index].size(); i++) {
+        gridImageDrawables[i].set(imageFiles[userStudyMode][order[i]][randomizedIndices[order[i]][index]]);
     }
 }
 
@@ -125,13 +140,23 @@ void SelectionScreen::setup(int mode) {
     else {
         state = IMAGES1;
         
-        randomizedCatIndices.resize(imageFiles[mode].size());
+        randomizedIndices.resize(imageFiles[mode].size());
+        for(int i=0; i<imageFiles[mode].size(); i++) {
+            size_t catSize = imageFiles[mode][i].size();
+            for (int j=0; j<catSize; j++) {
+                //randomizedIndices[i].push_back(i*catSize + j);
+                randomizedIndices[i].push_back(j);
+            }
+            std::random_shuffle(randomizedIndices[i].begin(), randomizedIndices[i].end());
+        }
+        
+        /*randomizedCatIndices.resize(imageFiles[mode].size());
         for(int i=0; i<imageFiles[mode].size(); i++) {
             randomizedCatIndices[i] = i;
         }
         // randomize indices
         std::random_shuffle(randomizedCatIndices.begin(), randomizedCatIndices.end());
-        
+        */
         grid.isColors = false;
         
         //--- allocate memory for images --------
@@ -141,7 +166,8 @@ void SelectionScreen::setup(int mode) {
         
         
         grid.SetGridSize(imagesPerCategory/2, 2, 824, 768, ofVec2f(200,0));
-        changeImageCategory(randomizedCatIndices[0]);
+        //changeImageCategory(randomizedCatIndices[0]);
+        changeImages(0);
         grid.SetGridContent(getBGForImages(), gridDrawables, gridDrawables, 1.0f);
         
         sidebar.SetGridSize(1, 4, 200, 768, ofVec2f(0,0));
@@ -238,7 +264,8 @@ void SelectionScreen::update() {
         default:
             state = (SelectionState)((int)state+1);
             grid.deselectAll();
-            changeImageCategory(randomizedCatIndices[state]);
+            //changeImageCategory(randomizedCatIndices[state]);
+            changeImages(state);
             break;
     }
 }

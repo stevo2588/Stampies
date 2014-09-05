@@ -124,7 +124,8 @@ private:
     std::vector<Utility::ImageDrawable> matImageDrawables;
     std::vector<Utility::CenterDrawable*> matDrawables;
     
-    std::vector<int> randomizedCatIndices;
+    //std::vector<int> randomizedCatIndices;
+    std::vector< std::vector<int> > randomizedIndices;
     
     Canvas& canvas;
     
@@ -137,7 +138,8 @@ private:
     
     bool registering();
     
-    void changeImageCategory(unsigned cat);
+    //void changeImageCategory(unsigned cat);
+    void changeImages(unsigned index);
 };
 
 #endif
